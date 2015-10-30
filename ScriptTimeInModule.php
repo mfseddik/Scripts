@@ -35,11 +35,9 @@ if(@mysql_connect($db_server, $db_username, $db_pass)){
 	}
 }
 $result = array();
-for($i = 0;$i < count($data)-1; $i++){
+for($i = 0;$i < count($data); $i++){
   if($data[$i]["name"] == 'document-ready' || $data[$i]["name"] == 'window-unload'){
-	  if($data[$i]['user_id']==$data[$i+1]['user_id']){
 	    array_push($result, $data[$i]);
-    }
   }
 }
 
