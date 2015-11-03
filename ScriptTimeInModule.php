@@ -83,7 +83,7 @@ function calculate_time($result, $module_id, $book_id){
  
     $dateDiff = strtotime($result[$i+1]['action_time']) - strtotime($result[$i]['action_time']);
 	  //echo $dateDiff."     ";
-	  if($dateDiff > $maxDiff && $dateDiff <= 6000){
+	  if($dateDiff > $maxDiff && $dateDiff <= 7200){
 	    $maxDiff = $dateDiff;
 	  }
 	  
