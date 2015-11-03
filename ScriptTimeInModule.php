@@ -22,23 +22,18 @@ $query = "SELECT *
                 AND book_id = $book_id
                 AND module_id = $module_id
                 AND action_time BETWEEN '$start_date' AND '$end_date'
+                AND (name ='document-ready' OR name = 'window-unload')
                 ORDER BY user_id, action_time, id";
 //}
-$data = array();
+$result = array();
 if(@mysql_connect($db_server, $db_username, $db_pass)){
 	  if(@mysql_select_db($db_name)){
 	    if($query_run = mysql_query($query)){
 		  while($query_result = mysql_fetch_assoc($query_run)){
-			array_push($data, $query_result); 
+			array_push($result, $query_result); 
 		  } 
 		}
 	}
-}
-$result = array();
-for($i = 0;$i < count($data); $i++){
-  if($data[$i]["name"] == 'document-ready' || $data[$i]["name"] == 'window-unload'){
-	    array_push($result, $data[$i]);
-  }
 }
 
 //print_r($result);
